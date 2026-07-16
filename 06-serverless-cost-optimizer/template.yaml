@@ -1,0 +1,89 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Serverless Cost Optimizer — a Lambda function, run daily on a CloudWatch
+  Events schedule, that finds CloudWatch Log Groups with no retention policy
+  (they keep every log event forever, which quietly grows your bill) and
+  sets a sensible expiration on them. Uses only Lambda and CloudWatch.
+
+Parameters:
+  RetentionDays:
+    Type: Number
+    Default: 30
+    Description: "How many days of logs to keep once a retention policy is applied."
+  DryRun:
+    Type: String
+    Default: "true"
+    AllowedValues: ["true", "false"]
+    Description: >
+      "true" = only log/report what would change, nothing is modified (safe default).
+      "false" = actually apply retention policies.
+
+Globals:
+  Function:
+    Timeout: 60
+    MemorySize: 128
+    Runtime: python3.12
+
+Resources:
+
+  LogRetentionOptimizerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: functions/optimize_log_retention/
+      Handler: app.handler
+      Environment:
+        Variables:
+          RETENTION_DAYS: !Ref RetentionDays
+          DRY_RUN: !Ref DryRun
+      Policies:
+        - Statement:
+            - Effect: Allow
+              Action:
+                - logs:DescribeLogGroups
+                - logs:PutRetentionPolicy
+              Resource: "*"
+            - Effect: Allow
+              Action:
+                - cloudwatch:PutMetricData
+              Resource: "*"
+      Events:
+        DailyScan:
+          Type: Schedule
+          Properties:
+            Name: cost-optimizer-daily-scan
+            Description: "Runs the log retention optimizer once a day"
+            Schedule: rate(1 day)
+            Enabled: true
+
+  CostOptimizerDashboard:
+    Type: AWS::CloudWatch::Dashboard
+    Properties:
+      DashboardName: cost-optimizer-savings
+      DashboardBody: !Sub |
+        {
+          "widgets": [
+            {
+              "type": "metric",
+              "x": 0, "y": 0, "width": 18, "height": 6,
+              "properties": {
+                "title": "Log groups scanned vs. optimized (per run)",
+                "view": "timeSeries",
+                "region": "${AWS::Region}",
+                "stacked": false,
+                "metrics": [
+                  [ "CostOptimizer", "LogGroupsScanned", { "stat": "Sum", "label": "Scanned" } ],
+                  [ "CostOptimizer", "LogGroupsOptimized", { "stat": "Sum", "label": "Optimized" } ]
+                ]
+              }
+            }
+          ]
+        }
+
+Outputs:
+  FunctionName:
+    Description: "Lambda function name — use this to invoke it manually for testing"
+    Value: !Ref LogRetentionOptimizerFunction
+  DashboardUrl:
+    Description: "CloudWatch dashboard showing scan/optimize counts over time"
+    Value: !Sub "https://${AWS::Region}.console.aws.amazon.com/cloudwatch/home?region=${AWS::Region}#dashboards:name=cost-optimizer-savings"
