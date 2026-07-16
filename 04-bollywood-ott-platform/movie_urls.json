@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "title": "Stree 2",
+    "genre": "Horror Comedy",
+    "year": 2024,
+    "rating": "8.5",
+    "video": "movie1.mp4",
+    "poster": "poster1.jpg",
+    "video_url": "https://bollywood-ott-2026.s3.us-east-1.amazonaws.com/videos/vidssave.com+stree+2+movie_+comedy+scene+_++Rajkumar+rao_+Shraddha+Kapoor_+Aparshakti+Khurana+%23stree2movie+%23funny+360P.mp4",
+    "poster_url": "https://bollywood-ott-2026.s3.us-east-1.amazonaws.com/posters/stree+2.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Pushpa 2: The Rule",
+    "genre": "Action Thriller",
+    "year": 2024,
+    "rating": "7.9",
+    "video": "movie2.mp4",
+    "poster": "poster2.jpg",
+    "video_url": "https://bollywood-ott-2026.s3.us-east-1.amazonaws.com/videos/PUSHPA+2_+_Rappa+Rappa+Scene%F0%9F%A9%B8+-+Pushpa's+Final+Warning+%F0%9F%94%A5%F0%9F%94%A5_+_+Allu+Arjun+_+Movie+Dialogue+Clip.mp4",
+    "poster_url": "https://bollywood-ott-2026.s3.us-east-1.amazonaws.com/posters/pushpa+2.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Jawan",
+    "genre": "Action Drama",
+    "year": 2023,
+    "rating": "7.2",
+    "video": "movie3.mp4",
+    "poster": "poster3.jpg",
+    "video_url": "https://bollywood-ott-2026.s3.us-east-1.amazonaws.com/videos/Jawan+Mask+Scene.mp4",
+    "poster_url": "https://bollywood-ott-2026.s3.us-east-1.amazonaws.com/posters/jawan.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Animal",
+    "genre": "Crime Drama",
+    "year": 2023,
+    "rating": "6.8",
+    "video": "movie4.mp4",
+    "poster": "poster4.jpg",
+    "video_url": "https://bollywood-ott-2026.s3.us-east-1.amazonaws.com/videos/vidssave.com+Animal_+Arjan+Vailly+Full+Video+(Film+Version)+Ranbir+Kapoor%2C+Sandeep%2CBhupinder+B%2CManan+_+Bhushan+K+1+240P.mp4",
+    "poster_url": "https://bollywood-ott-2026.s3.us-east-1.amazonaws.com/posters/animal.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Dunki",
+    "genre": "Drama Comedy",
+    "year": 2023,
+    "rating": "6.5",
+    "video": "movie5.mp4",
+    "poster": "poster5.jpg",
+    "video_url": null,
+    "poster_url": "https://bollywood-ott-2026.s3.us-east-1.amazonaws.com/posters/dunky.jpg"
+  }
+]
