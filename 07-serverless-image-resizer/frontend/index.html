@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Serverless Image Resizer</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <h1>🖼️ Serverless Image Resizer</h1>
+
+        <p>
+            Compress & Resize Images using
+            <strong>AWS Lambda, Amazon S3 & API Gateway</strong>
+        </p>
+
+    </header>
+
+
+    <!-- ================= UPLOAD SECTION ================= -->
+
+    <section class="uploadCard">
+
+        <div class="dropZone" id="dropZone">
+
+            <div class="uploadIcon">☁️</div>
+
+            <h2>Drag & Drop Image</h2>
+
+            <p>or choose an image from your computer</p>
+
+            <input
+                type="file"
+                id="fileInput"
+                accept="image/*">
+
+        </div>
+
+        <br>
+
+        <button id="uploadBtn">
+
+            🚀 Upload Image
+
+        </button>
+
+        <br><br>
+
+        <div class="progressContainer">
+
+            <div id="progressBar"></div>
+
+        </div>
+
+        <p id="status"></p>
+
+    </section>
+
+
+    <!-- ================= AWS SERVICES ================= -->
+
+    <section class="services">
+
+        <div class="service">
+            ☁ Amazon S3
+        </div>
+
+        <div class="service">
+            ⚡ AWS Lambda
+        </div>
+
+        <div class="service">
+            🚀 API Gateway
+        </div>
+
+        <div class="service">
+            📦 Pillow
+        </div>
+
+        <div class="service">
+            🐍 Python
+        </div>
+
+    </section>
+
+
+    <!-- ================= STATISTICS ================= -->
+
+    <section class="statistics">
+
+        <div class="statCard">
+
+            <h3>Original Size</h3>
+
+            <h2 id="statOriginal">0 KB</h2>
+
+        </div>
+
+        <div class="statCard">
+
+            <h3>Compressed Size</h3>
+
+            <h2 id="statCompressed">0 KB</h2>
+
+        </div>
+
+        <div class="statCard">
+
+            <h3>Compression Saved</h3>
+
+            <h2 id="statPercent">0%</h2>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= IMAGE PREVIEW ================= -->
+
+    <section class="preview">
+
+        <!-- ORIGINAL IMAGE -->
+
+        <div class="card">
+
+            <h2>📷 Original Image</h2>
+
+            <img id="originalImage">
+
+            <div class="details">
+
+                <p id="originalSize">
+                    Size : --
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- RESIZED IMAGE -->
+
+        <div class="card">
+
+            <h2>🗜️ Compressed Image</h2>
+
+            <img id="resizedImage">
+
+            <div class="details">
+
+                <p id="resizedSize">
+                    Size : --
+                </p>
+
+                <p id="compression">
+                    Compression : --
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= DOWNLOAD ================= -->
+
+    <section class="downloadSection">
+
+        <a id="downloadBtn" download>
+
+            <button>
+
+                ⬇ Download Compressed Image
+
+            </button>
+
+        </a>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <div class="footer">
+
+        Made with using
+
+        <strong>
+            Amazon S3 • AWS Lambda • API Gateway • Pillow • JavaScript
+        </strong>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
