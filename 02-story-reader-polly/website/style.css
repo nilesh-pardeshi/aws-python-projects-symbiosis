@@ -1,0 +1,2481 @@
+/* ===================================================
+   STORYLAND - AWS POLLY STORY READER
+   PART 1
+=================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Baloo 2',cursive;
+
+    min-height:100vh;
+
+    overflow-x:hidden;
+
+    padding:40px;
+
+    background:linear-gradient(
+    -45deg,
+    #7F7FD5,
+    #86A8E7,
+    #91EAE4,
+    #FFD56F,
+    #FF8FAB,
+    #A0E7E5);
+
+    background-size:600% 600%;
+
+    animation:bgMove 18s ease infinite;
+
+    position:relative;
+
+}
+
+/* Animated Gradient */
+
+@keyframes bgMove{
+
+0%{
+background-position:0% 50%;
+}
+
+50%{
+background-position:100% 50%;
+}
+
+100%{
+background-position:0% 50%;
+}
+
+}
+
+/* Floating Stars */
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+left:0;
+top:0;
+
+width:100%;
+height:100%;
+
+pointer-events:none;
+
+background-image:
+
+radial-gradient(circle,#fff 2px,transparent 3px),
+radial-gradient(circle,#fff 1px,transparent 2px),
+radial-gradient(circle,#fff 3px,transparent 4px);
+
+background-size:
+
+150px 150px,
+250px 250px,
+300px 300px;
+
+animation:stars 35s linear infinite;
+
+opacity:.5;
+
+}
+
+@keyframes stars{
+
+from{
+
+transform:translateY(0);
+
+}
+
+to{
+
+transform:translateY(-300px);
+
+}
+
+}
+
+/* Main Heading */
+
+h1{
+
+font-size:60px;
+
+font-weight:800;
+
+text-align:center;
+
+color:white;
+
+text-shadow:
+
+0 4px 15px rgba(0,0,0,.3);
+
+margin-bottom:15px;
+
+animation:pop 1s ease;
+
+}
+
+@keyframes pop{
+
+0%{
+
+transform:scale(.5);
+
+opacity:0;
+
+}
+
+100%{
+
+transform:scale(1);
+
+opacity:1;
+
+}
+
+}
+
+/* Subtitle */
+
+h1::after{
+
+content:"✨ Magical Story Reader ✨";
+
+display:block;
+
+font-size:22px;
+
+margin-top:10px;
+
+font-weight:600;
+
+color:#fffbe7;
+
+letter-spacing:2px;
+
+}
+
+/* Section Heading */
+
+h2{
+
+font-size:36px;
+
+margin-top:50px;
+
+margin-bottom:20px;
+
+text-align:center;
+
+color:white;
+
+text-shadow:2px 2px 8px rgba(0,0,0,.2);
+
+}
+
+/* Input */
+
+input{
+
+width:100%;
+
+max-width:700px;
+
+display:block;
+
+margin:20px auto;
+
+padding:18px;
+
+font-size:20px;
+
+border:none;
+
+outline:none;
+
+border-radius:20px;
+
+background:rgba(255,255,255,.8);
+
+backdrop-filter:blur(12px);
+
+box-shadow:
+
+0 10px 25px rgba(0,0,0,.15);
+
+transition:.4s;
+
+font-family:'Baloo 2';
+
+}
+
+input:focus{
+
+transform:scale(1.03);
+
+box-shadow:
+
+0 0 20px #fff,
+
+0 0 35px #ffd54f;
+
+}
+
+/* Textarea */
+
+textarea{
+
+width:100%;
+
+max-width:700px;
+
+height:240px;
+
+display:block;
+
+margin:auto;
+
+padding:20px;
+
+font-size:18px;
+
+border:none;
+
+outline:none;
+
+border-radius:25px;
+
+resize:none;
+
+background:rgba(255,255,255,.85);
+
+backdrop-filter:blur(12px);
+
+box-shadow:
+
+0 10px 30px rgba(0,0,0,.18);
+
+transition:.4s;
+
+font-family:'Baloo 2';
+
+}
+
+textarea:focus{
+
+transform:scale(1.02);
+
+box-shadow:
+
+0 0 20px #fff,
+
+0 0 30px #00e5ff;
+
+}
+
+/* Upload Button */
+
+button{
+
+display:block;
+
+margin:35px auto;
+
+padding:18px 55px;
+
+font-size:22px;
+
+font-weight:bold;
+
+font-family:'Baloo 2';
+
+border:none;
+
+border-radius:60px;
+
+cursor:pointer;
+
+color:white;
+
+background:linear-gradient(
+45deg,
+#ff6b6b,
+#ffb347,
+#6dd5fa,
+#7bed9f);
+
+background-size:400%;
+
+animation:buttonGradient 10s linear infinite;
+
+box-shadow:
+
+0 10px 25px rgba(0,0,0,.25);
+
+transition:.35s;
+
+}
+
+button:hover{
+
+transform:translateY(-6px) scale(1.05);
+
+box-shadow:
+
+0 20px 40px rgba(0,0,0,.3);
+
+}
+
+button:active{
+
+transform:scale(.95);
+
+}
+
+@keyframes buttonGradient{
+
+0%{
+
+background-position:0%;
+
+}
+
+100%{
+
+background-position:400%;
+
+}
+
+}
+
+/* Divider */
+
+hr{
+
+margin:60px 0;
+
+border:none;
+
+height:5px;
+
+border-radius:50px;
+
+background:linear-gradient(
+90deg,
+#ff6b6b,
+#ffd93d,
+#6bcBef,
+#4cd137,
+#ff6bcb);
+
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar{
+
+width:12px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:#ff6bcb;
+
+border-radius:20px;
+
+}
+
+::-webkit-scrollbar-track{
+
+background:white;
+
+}
+/* ===================================================
+   STORYLAND - AWS POLLY STORY READER
+   PART 2
+===================================================*/
+
+/* Floating Clouds */
+
+.cloud{
+    position:absolute;
+    background:white;
+    width:180px;
+    height:60px;
+    border-radius:100px;
+    opacity:.9;
+    animation:cloudMove 50s linear infinite;
+    z-index:-1;
+}
+
+.cloud::before{
+    content:"";
+    position:absolute;
+    width:70px;
+    height:70px;
+    background:white;
+    border-radius:50%;
+    left:25px;
+    top:-30px;
+}
+
+.cloud::after{
+    content:"";
+    position:absolute;
+    width:90px;
+    height:90px;
+    background:white;
+    border-radius:50%;
+    right:25px;
+    top:-45px;
+}
+
+.cloud1{
+    top:60px;
+    left:-250px;
+    animation-duration:55s;
+}
+
+.cloud2{
+    top:220px;
+    left:-350px;
+    animation-duration:75s;
+}
+
+.cloud3{
+    top:430px;
+    left:-450px;
+    animation-duration:95s;
+}
+
+@keyframes cloudMove{
+
+from{
+
+transform:translateX(-300px);
+
+}
+
+to{
+
+transform:translateX(1800px);
+
+}
+
+}
+
+/* Floating Balloons */
+
+.balloon{
+
+position:absolute;
+
+width:70px;
+
+height:90px;
+
+border-radius:50%;
+
+animation:floatBalloon 12s ease-in-out infinite;
+
+z-index:-1;
+
+opacity:.85;
+
+}
+
+.balloon::after{
+
+content:"";
+
+position:absolute;
+
+left:34px;
+
+top:88px;
+
+width:2px;
+
+height:120px;
+
+background:white;
+
+}
+
+.red{
+
+background:#ff6b6b;
+
+left:80px;
+
+bottom:30px;
+
+}
+
+.yellow{
+
+background:#ffd93d;
+
+right:120px;
+
+bottom:80px;
+
+animation-delay:2s;
+
+}
+
+.green{
+
+background:#6BCB77;
+
+left:220px;
+
+bottom:180px;
+
+animation-delay:4s;
+
+}
+
+.blue{
+
+background:#4D96FF;
+
+right:280px;
+
+bottom:150px;
+
+animation-delay:6s;
+
+}
+
+@keyframes floatBalloon{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-30px);
+
+}
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
+
+/* Story Library */
+
+#stories{
+
+display:grid;
+
+grid-template-columns:
+
+repeat(auto-fit,minmax(340px,1fr));
+
+gap:35px;
+
+margin-top:30px;
+
+}
+
+/* Story Card */
+
+.card{
+
+background:rgba(255,255,255,.78);
+
+backdrop-filter:blur(18px);
+
+border-radius:30px;
+
+padding:25px;
+
+box-shadow:
+
+0 20px 40px rgba(0,0,0,.18);
+
+transition:.45s;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.card:hover{
+
+transform:
+
+translateY(-12px)
+
+rotate(.5deg);
+
+box-shadow:
+
+0 25px 60px rgba(0,0,0,.28);
+
+}
+
+/* Rainbow Top Border */
+
+.card::before{
+
+content:"";
+
+position:absolute;
+
+left:0;
+
+top:0;
+
+width:100%;
+
+height:8px;
+
+background:linear-gradient(
+
+90deg,
+
+#ff6b6b,
+
+#ffd93d,
+
+#6BCB77,
+
+#4D96FF,
+
+#ff6bcb);
+
+}
+
+/* Decorative Circle */
+
+.card::after{
+
+content:"📖";
+
+position:absolute;
+
+font-size:70px;
+
+right:15px;
+
+bottom:5px;
+
+opacity:.08;
+
+}
+
+/* Story Name */
+
+.card h3{
+
+font-size:30px;
+
+color:#ff4d6d;
+
+margin-bottom:15px;
+
+}
+
+/* Story Details */
+
+.card p{
+
+font-size:19px;
+
+margin:10px 0;
+
+color:#444;
+
+}
+
+/* Audio Player */
+
+audio{
+
+width:100%;
+
+margin-top:18px;
+
+border-radius:30px;
+
+box-shadow:
+
+0 8px 25px rgba(0,0,0,.18);
+
+}
+
+/* Audio Glow */
+
+audio:hover{
+
+transform:scale(1.02);
+
+transition:.3s;
+
+}
+
+/* Emoji before Heading */
+
+.card h3::before{
+
+content:"🦁 ";
+
+}
+
+/* Upload Success Animation */
+
+.success{
+
+animation:successPop .8s ease;
+
+}
+
+@keyframes successPop{
+
+0%{
+
+transform:scale(.7);
+
+opacity:0;
+
+}
+
+70%{
+
+transform:scale(1.1);
+
+}
+
+100%{
+
+transform:scale(1);
+
+opacity:1;
+
+}
+
+}
+
+/* Cute Shadow */
+
+.card:hover h3{
+
+color:#ff006e;
+
+}
+
+/* Smooth Fade */
+
+.card{
+
+animation:fadeUp .8s ease;
+
+}
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+
+transform:translateY(50px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+/* Footer */
+
+footer{
+
+margin-top:70px;
+
+text-align:center;
+
+font-size:20px;
+
+font-weight:bold;
+
+color:white;
+
+text-shadow:
+
+2px 2px 8px rgba(0,0,0,.3);
+
+padding-bottom:30px;
+
+}
+
+/* Floating Sparkles */
+
+.sparkle{
+
+position:absolute;
+
+font-size:20px;
+
+animation:sparkle 4s infinite;
+
+opacity:.8;
+
+}
+
+@keyframes sparkle{
+
+0%{
+
+transform:translateY(0) scale(.5);
+
+opacity:0;
+
+}
+
+50%{
+
+opacity:1;
+
+}
+
+100%{
+
+transform:translateY(-60px) scale(1.2);
+
+opacity:0;
+
+}
+
+}
+/* ===================================================
+   STORYLAND - AWS POLLY STORY READER
+   PART 3
+===================================================*/
+
+/* Rainbow Strip */
+
+body::after{
+
+content:"";
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:12px;
+
+background:linear-gradient(
+90deg,
+#ff595e,
+#ffca3a,
+#8ac926,
+#1982c4,
+#6a4c93,
+#ff006e);
+
+background-size:600%;
+
+animation:rainbowMove 8s linear infinite;
+
+z-index:999;
+
+}
+
+@keyframes rainbowMove{
+
+0%{
+
+background-position:0%;
+
+}
+
+100%{
+
+background-position:600%;
+
+}
+
+}
+
+/* Cartoon Grass */
+
+.grass{
+
+position:fixed;
+
+bottom:0;
+
+left:0;
+
+width:100%;
+
+height:120px;
+
+background:linear-gradient(
+#70e000,
+#38b000);
+
+z-index:-2;
+
+clip-path:polygon(
+0 100%,
+0 45%,
+5% 30%,
+10% 50%,
+15% 25%,
+20% 55%,
+25% 20%,
+30% 45%,
+35% 25%,
+40% 55%,
+45% 20%,
+50% 45%,
+55% 25%,
+60% 50%,
+65% 18%,
+70% 48%,
+75% 22%,
+80% 52%,
+85% 25%,
+90% 50%,
+95% 20%,
+100% 45%,
+100% 100%
+);
+
+}
+
+/* Flowers */
+
+.flower{
+
+position:absolute;
+
+font-size:35px;
+
+animation:flowerDance 4s ease-in-out infinite;
+
+}
+
+.flower1{
+
+left:80px;
+
+bottom:110px;
+
+}
+
+.flower2{
+
+right:140px;
+
+bottom:130px;
+
+animation-delay:1s;
+
+}
+
+.flower3{
+
+left:45%;
+
+bottom:100px;
+
+animation-delay:2s;
+
+}
+
+@keyframes flowerDance{
+
+0%{
+
+transform:rotate(-8deg);
+
+}
+
+50%{
+
+transform:rotate(8deg);
+
+}
+
+100%{
+
+transform:rotate(-8deg);
+
+}
+
+}
+
+/* Floating Magic */
+
+.magic{
+
+position:absolute;
+
+width:8px;
+
+height:8px;
+
+background:white;
+
+border-radius:50%;
+
+box-shadow:
+
+0 0 15px white,
+
+0 0 25px cyan,
+
+0 0 40px pink;
+
+animation:magicFloat 8s linear infinite;
+
+opacity:.7;
+
+}
+
+@keyframes magicFloat{
+
+0%{
+
+transform:translateY(0) scale(.5);
+
+opacity:0;
+
+}
+
+20%{
+
+opacity:1;
+
+}
+
+100%{
+
+transform:translateY(-500px) scale(1.5);
+
+opacity:0;
+
+}
+
+}
+
+/* Better Cards */
+
+.card{
+
+border:4px solid rgba(255,255,255,.25);
+
+}
+
+.card:hover{
+
+border-color:#fff;
+
+}
+
+/* Story Card Glow */
+
+.card:hover{
+
+box-shadow:
+
+0 0 20px rgba(255,255,255,.8),
+
+0 20px 60px rgba(0,0,0,.25);
+
+}
+
+/* Story Title */
+
+.card h3{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+font-weight:800;
+
+}
+
+/* Story Details */
+
+.card p{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+font-size:18px;
+
+}
+
+/* Upload Button Shine */
+
+button{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+button::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+
+left:-120px;
+
+width:80px;
+
+height:100%;
+
+background:rgba(255,255,255,.5);
+
+transform:skewX(-20deg);
+
+transition:1s;
+
+}
+
+button:hover::before{
+
+left:420px;
+
+}
+
+/* Button Pulse */
+
+button{
+
+animation:pulse 2s infinite;
+
+}
+
+@keyframes pulse{
+
+0%{
+
+box-shadow:
+
+0 0 0 0 rgba(255,255,255,.6);
+
+}
+
+70%{
+
+box-shadow:
+
+0 0 0 25px rgba(255,255,255,0);
+
+}
+
+100%{
+
+box-shadow:
+
+0 0 0 0 rgba(255,255,255,0);
+
+}
+
+}
+
+/* Audio Player */
+
+audio{
+
+background:white;
+
+padding:8px;
+
+}
+
+/* Story Counter */
+
+.counter{
+
+width:180px;
+
+margin:auto;
+
+padding:15px;
+
+border-radius:30px;
+
+background:white;
+
+font-size:22px;
+
+font-weight:bold;
+
+text-align:center;
+
+box-shadow:
+
+0 10px 30px rgba(0,0,0,.2);
+
+}
+
+/* Cute Badge */
+
+.badge{
+
+display:inline-block;
+
+padding:8px 18px;
+
+background:#ffca3a;
+
+border-radius:40px;
+
+font-size:15px;
+
+font-weight:bold;
+
+color:#444;
+
+margin-top:10px;
+
+}
+
+/* Glass Container */
+
+.container{
+
+background:rgba(255,255,255,.15);
+
+backdrop-filter:blur(20px);
+
+border-radius:35px;
+
+padding:30px;
+
+box-shadow:
+
+0 20px 50px rgba(0,0,0,.2);
+
+}
+
+/* Card Animation */
+
+.card:nth-child(1){
+
+animation-delay:.1s;
+
+}
+
+.card:nth-child(2){
+
+animation-delay:.2s;
+
+}
+
+.card:nth-child(3){
+
+animation-delay:.3s;
+
+}
+
+.card:nth-child(4){
+
+animation-delay:.4s;
+
+}
+
+.card:nth-child(5){
+
+animation-delay:.5s;
+
+}
+
+/* Floating Emojis */
+
+.emoji{
+
+position:absolute;
+
+font-size:28px;
+
+animation:emojiFloat 10s linear infinite;
+
+opacity:.8;
+
+}
+
+@keyframes emojiFloat{
+
+0%{
+
+transform:translateY(50px);
+
+opacity:0;
+
+}
+
+15%{
+
+opacity:1;
+
+}
+
+100%{
+
+transform:translateY(-700px);
+
+opacity:0;
+
+}
+
+}
+
+/* Decorative Heading */
+
+h2::before{
+
+content:"📚 ";
+
+}
+
+h2::after{
+
+content:" ✨";
+
+}
+
+/* Cute Placeholder */
+
+input::placeholder,
+textarea::placeholder{
+
+color:#888;
+
+font-size:18px;
+
+}
+
+/* Smooth Input */
+
+input:hover,
+textarea:hover{
+
+transform:translateY(-3px);
+
+}
+
+/* Better Focus */
+
+input:focus,
+textarea:focus{
+
+background:white;
+
+}
+/* ===================================================
+   STORYLAND - AWS POLLY STORY READER
+   PART 4
+===================================================*/
+
+/* Animated Sun */
+
+.sun{
+
+position:fixed;
+
+top:60px;
+
+right:80px;
+
+width:120px;
+
+height:120px;
+
+border-radius:50%;
+
+background:#FFD93D;
+
+box-shadow:
+0 0 40px #FFD93D,
+0 0 80px #FFD93D,
+0 0 120px rgba(255,217,61,.5);
+
+animation:sunRotate 30s linear infinite;
+
+z-index:-2;
+
+}
+
+.sun::before{
+
+content:"";
+
+position:absolute;
+
+left:-20px;
+top:-20px;
+
+width:160px;
+height:160px;
+
+border:4px dashed rgba(255,255,255,.7);
+
+border-radius:50%;
+
+}
+
+@keyframes sunRotate{
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+/* Moon */
+
+.moon{
+
+position:fixed;
+
+left:70px;
+
+top:80px;
+
+width:70px;
+
+height:70px;
+
+border-radius:50%;
+
+background:white;
+
+box-shadow:
+0 0 30px white;
+
+opacity:.8;
+
+z-index:-2;
+
+}
+
+/* Rainbow */
+
+.rainbow{
+
+position:fixed;
+
+left:50%;
+
+transform:translateX(-50%);
+
+top:40px;
+
+width:500px;
+
+height:250px;
+
+border-radius:500px 500px 0 0;
+
+border:18px solid transparent;
+
+border-top-color:#ff595e;
+
+border-left-color:#ffca3a;
+
+border-right-color:#1982c4;
+
+opacity:.35;
+
+z-index:-3;
+
+}
+
+/* Butterflies */
+
+.butterfly{
+
+position:absolute;
+
+font-size:35px;
+
+animation:fly 14s linear infinite;
+
+opacity:.8;
+
+}
+
+.b1{
+
+left:-100px;
+
+top:180px;
+
+animation-delay:0s;
+
+}
+
+.b2{
+
+left:-250px;
+
+top:380px;
+
+animation-delay:5s;
+
+}
+
+.b3{
+
+left:-180px;
+
+top:600px;
+
+animation-delay:9s;
+
+}
+
+@keyframes fly{
+
+0%{
+
+transform:translateX(0) translateY(0);
+
+}
+
+25%{
+
+transform:translateX(500px) translateY(-50px);
+
+}
+
+50%{
+
+transform:translateX(900px) translateY(40px);
+
+}
+
+75%{
+
+transform:translateX(1300px) translateY(-60px);
+
+}
+
+100%{
+
+transform:translateX(1800px) translateY(20px);
+
+}
+
+}
+
+/* Fireflies */
+
+.firefly{
+
+position:absolute;
+
+width:8px;
+
+height:8px;
+
+background:#fff176;
+
+border-radius:50%;
+
+box-shadow:
+0 0 15px yellow;
+
+animation:firefly 6s ease-in-out infinite;
+
+}
+
+@keyframes firefly{
+
+0%{
+
+transform:translateY(0);
+
+opacity:.2;
+
+}
+
+50%{
+
+opacity:1;
+
+transform:translateY(-60px);
+
+}
+
+100%{
+
+opacity:.2;
+
+transform:translateY(0);
+
+}
+
+}
+
+/* Floating Leaves */
+
+.leaf{
+
+position:absolute;
+
+font-size:24px;
+
+animation:leafFall 12s linear infinite;
+
+opacity:.8;
+
+}
+
+@keyframes leafFall{
+
+0%{
+
+transform:translateY(-100px) rotate(0deg);
+
+}
+
+100%{
+
+transform:translateY(1200px) rotate(720deg);
+
+}
+
+}
+
+/* Card Shine */
+
+.card{
+
+overflow:hidden;
+
+}
+
+.card span.shine{
+
+position:absolute;
+
+top:-100%;
+
+left:-100%;
+
+width:80%;
+
+height:250%;
+
+background:rgba(255,255,255,.25);
+
+transform:rotate(30deg);
+
+transition:1s;
+
+}
+
+.card:hover span.shine{
+
+left:150%;
+
+}
+
+/* Card Hover */
+
+.card:hover{
+
+cursor:pointer;
+
+}
+
+/* Audio */
+
+audio{
+
+border-radius:40px;
+
+background:#ffffff;
+
+outline:none;
+
+}
+
+/* Audio Glow */
+
+audio:hover{
+
+box-shadow:
+0 0 25px rgba(0,229,255,.6);
+
+}
+
+/* Floating Book */
+
+.book{
+
+position:absolute;
+
+font-size:55px;
+
+animation:bookFloat 5s ease-in-out infinite;
+
+}
+
+@keyframes bookFloat{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-20px);
+
+}
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
+
+/* Floating Pencil */
+
+.pencil{
+
+position:absolute;
+
+font-size:45px;
+
+animation:pencilSpin 10s linear infinite;
+
+}
+
+@keyframes pencilSpin{
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+/* Cute Shadow */
+
+button:hover{
+
+filter:brightness(1.05);
+
+}
+
+/* Floating Hearts */
+
+.heart{
+
+position:absolute;
+
+font-size:22px;
+
+animation:heartFloat 8s linear infinite;
+
+opacity:.75;
+
+}
+
+@keyframes heartFloat{
+
+0%{
+
+transform:translateY(0);
+
+opacity:0;
+
+}
+
+25%{
+
+opacity:1;
+
+}
+
+100%{
+
+transform:translateY(-500px);
+
+opacity:0;
+
+}
+
+}
+
+/* Upload Success */
+
+.successPopup{
+
+position:fixed;
+
+top:30px;
+
+right:30px;
+
+background:white;
+
+padding:18px 28px;
+
+border-radius:20px;
+
+font-size:20px;
+
+font-weight:bold;
+
+color:#4CAF50;
+
+box-shadow:
+0 15px 40px rgba(0,0,0,.25);
+
+animation:popup 1s;
+
+}
+
+@keyframes popup{
+
+0%{
+
+transform:translateX(300px);
+
+opacity:0;
+
+}
+
+100%{
+
+transform:translateX(0);
+
+opacity:1;
+
+}
+
+}
+
+/* Floating Stars */
+
+.star{
+
+position:absolute;
+
+font-size:18px;
+
+animation:starBlink 2s infinite;
+
+}
+
+@keyframes starBlink{
+
+0%{
+
+opacity:.2;
+
+}
+
+50%{
+
+opacity:1;
+
+transform:scale(1.5);
+
+}
+
+100%{
+
+opacity:.2;
+
+}
+
+}
+
+/* Input Hover */
+
+input:hover,
+textarea:hover{
+
+box-shadow:
+0 0 25px rgba(255,255,255,.8);
+
+}
+
+/* Fancy Footer */
+
+footer{
+
+background:rgba(255,255,255,.18);
+
+backdrop-filter:blur(18px);
+
+padding:25px;
+
+border-radius:25px;
+
+margin-top:80px;
+
+}
+
+/* ===================================================
+   STORYLAND - AWS POLLY STORY READER
+   PART 5 (FINAL)
+===================================================*/
+
+/* ==========================
+   RESPONSIVE DESIGN
+========================== */
+
+@media(max-width:1200px){
+
+body{
+
+padding:30px;
+
+}
+
+#stories{
+
+grid-template-columns:
+repeat(auto-fit,minmax(320px,1fr));
+
+}
+
+}
+
+@media(max-width:900px){
+
+h1{
+
+font-size:42px;
+
+}
+
+h2{
+
+font-size:28px;
+
+}
+
+textarea{
+
+height:200px;
+
+}
+
+button{
+
+width:100%;
+
+font-size:20px;
+
+}
+
+}
+
+@media(max-width:600px){
+
+body{
+
+padding:15px;
+
+}
+
+h1{
+
+font-size:34px;
+
+}
+
+h1::after{
+
+font-size:16px;
+
+}
+
+input{
+
+font-size:18px;
+
+}
+
+textarea{
+
+height:180px;
+
+font-size:16px;
+
+}
+
+.card{
+
+padding:18px;
+
+}
+
+.card h3{
+
+font-size:24px;
+
+}
+
+.card p{
+
+font-size:16px;
+
+}
+
+}
+
+/* ==========================
+   CONFETTI
+========================== */
+
+.confetti{
+
+position:absolute;
+
+width:12px;
+
+height:12px;
+
+border-radius:50%;
+
+animation:confettiFall 10s linear infinite;
+
+opacity:.9;
+
+}
+
+@keyframes confettiFall{
+
+0%{
+
+transform:translateY(-100px) rotate(0);
+
+}
+
+100%{
+
+transform:translateY(1200px) rotate(1080deg);
+
+}
+
+}
+
+/* ==========================
+   FLOATING TOYS
+========================== */
+
+.toy{
+
+position:absolute;
+
+font-size:45px;
+
+animation:toyFloat 9s ease-in-out infinite;
+
+opacity:.9;
+
+}
+
+@keyframes toyFloat{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-25px);
+
+}
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
+
+/* ==========================
+   GLOWING CARD
+========================== */
+
+.card:hover{
+
+background:rgba(255,255,255,.92);
+
+}
+
+.card:hover::before{
+
+height:10px;
+
+}
+
+/* ==========================
+   STORY ICON
+========================== */
+
+.card h3::after{
+
+content:" 📚";
+
+}
+
+/* ==========================
+   AUDIO ANIMATION
+========================== */
+
+audio{
+
+transition:.4s;
+
+}
+
+audio:hover{
+
+transform:scale(1.02);
+
+}
+
+/* ==========================
+   INPUT ANIMATION
+========================== */
+
+input,
+textarea{
+
+transition:.4s;
+
+}
+
+input:hover,
+textarea:hover{
+
+transform:translateY(-4px);
+
+}
+
+/* ==========================
+   BUTTON SHADOW
+========================== */
+
+button{
+
+letter-spacing:1px;
+
+}
+
+button:hover{
+
+letter-spacing:2px;
+
+}
+
+/* ==========================
+   MAGIC GLOW
+========================== */
+
+.magicGlow{
+
+position:absolute;
+
+width:200px;
+
+height:200px;
+
+border-radius:50%;
+
+filter:blur(90px);
+
+opacity:.25;
+
+animation:glowMove 12s ease infinite;
+
+}
+
+@keyframes glowMove{
+
+0%{
+
+transform:translate(0,0);
+
+}
+
+50%{
+
+transform:translate(80px,-40px);
+
+}
+
+100%{
+
+transform:translate(0,0);
+
+}
+
+}
+
+/* ==========================
+   BADGES
+========================== */
+
+.badge-green{
+
+background:#6BCB77;
+
+color:white;
+
+}
+
+.badge-blue{
+
+background:#4D96FF;
+
+color:white;
+
+}
+
+.badge-pink{
+
+background:#FF5DA2;
+
+color:white;
+
+}
+
+.badge-orange{
+
+background:#FF9F1C;
+
+color:white;
+
+}
+
+/* ==========================
+   SPARKLES
+========================== */
+
+.spark{
+
+position:absolute;
+
+font-size:18px;
+
+animation:sparkMove 5s linear infinite;
+
+opacity:.8;
+
+}
+
+@keyframes sparkMove{
+
+0%{
+
+transform:translateY(0);
+
+opacity:0;
+
+}
+
+20%{
+
+opacity:1;
+
+}
+
+100%{
+
+transform:translateY(-180px);
+
+opacity:0;
+
+}
+
+}
+
+/* ==========================
+   STORY TITLE EFFECT
+========================== */
+
+.card h3{
+
+transition:.4s;
+
+}
+
+.card:hover h3{
+
+transform:translateX(8px);
+
+}
+
+/* ==========================
+   FOOTER
+========================== */
+
+footer{
+
+font-size:18px;
+
+font-weight:bold;
+
+line-height:35px;
+
+}
+
+/* ==========================
+   SELECTION
+========================== */
+
+::selection{
+
+background:#FFD93D;
+
+color:#333;
+
+}
+
+/* ==========================
+   FOCUS RING
+========================== */
+
+input:focus,
+textarea:focus{
+
+outline:none;
+
+border:3px solid white;
+
+}
+
+/* ==========================
+   LOADING SPINNER
+========================== */
+
+.loader{
+
+width:60px;
+
+height:60px;
+
+border-radius:50%;
+
+border:8px solid white;
+
+border-top:8px solid #4D96FF;
+
+animation:spin 1s linear infinite;
+
+margin:auto;
+
+}
+
+@keyframes spin{
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+/* ==========================
+   FINAL POLISH
+========================== */
+
+.card{
+
+transition:.45s;
+
+}
+
+button{
+
+transition:.35s;
+
+}
+
+input{
+
+transition:.35s;
+
+}
+
+textarea{
+
+transition:.35s;
+
+}
+
+audio{
+
+transition:.35s;
+
+}
+
+/* ==========================
+   END
+========================== */
