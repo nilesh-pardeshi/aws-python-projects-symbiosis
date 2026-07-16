@@ -1,0 +1,27 @@
+{
+  "website_url": "http://mohit-wedding-photos-2026.s3-website-us-east-1.amazonaws.com",
+  "index_html_url": "https://mohit-wedding-photos-2026.s3.us-east-1.amazonaws.com/index.html",
+  "articles_json_url": "https://mohit-wedding-photos-2026.s3.us-east-1.amazonaws.com/news/articles.json",
+  "images": [
+    {
+      "file": "article_1.jpg",
+      "url": "https://mohit-wedding-photos-2026.s3.us-east-1.amazonaws.com/news/images/article_1.jpg"
+    },
+    {
+      "file": "article_2.jpg",
+      "url": "https://mohit-wedding-photos-2026.s3.us-east-1.amazonaws.com/news/images/article_2.jpg"
+    },
+    {
+      "file": "article_3.jpg",
+      "url": "https://mohit-wedding-photos-2026.s3.us-east-1.amazonaws.com/news/images/article_3.jpg"
+    },
+    {
+      "file": "article_4.jpg",
+      "url": "https://mohit-wedding-photos-2026.s3.us-east-1.amazonaws.com/news/images/article_4.jpg"
+    },
+    {
+      "file": "article_5.jpg",
+      "url": "https://mohit-wedding-photos-2026.s3.us-east-1.amazonaws.com/news/images/article_5.jpg"
+    }
+  ]
+}
