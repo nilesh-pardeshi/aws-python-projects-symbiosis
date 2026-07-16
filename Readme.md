@@ -2,25 +2,27 @@
 
 A collection of cloud-native projects developed during the **AWS with Python Training Program** conducted by **Symbiosis** and **sponsored by Capgemini**.
 
-These projects demonstrate practical experience with AWS cloud services, serverless architecture, automation, REST APIs, CI/CD pipelines, and Python-based cloud application development.
+These projects demonstrate practical experience with AWS cloud services, serverless architecture, automation, REST APIs, CI/CD pipelines, Infrastructure as Code (IaC), cloud monitoring, cost optimization, and Python-based cloud application development.
 
 ---
 
 # 🚀 Projects Included
 
 | No. | Project | AWS Services |
-|-----|----------|--------------|
+|-----|---------|--------------|
 | 01 | ☁️ Cloud Code Runner | EC2, S3, IAM, CodeBuild, CodePipeline |
 | 02 | 📚 Story Reader with Amazon Polly | S3, Lambda, Polly, DynamoDB, API Gateway |
 | 03 | 📰 Top 5 News Website | S3, Python, Boto3 |
 | 04 | 🎬 Bollywood OTT Platform | EC2, S3, IAM |
 | 05 | 📁 Serverless File Vault | S3, Lambda, API Gateway, CloudWatch |
+| 06 | 💰 Automated Cost Optimizer | Lambda, EventBridge, CloudWatch, IAM, CloudFormation, AWS SAM |
+| 07 | 🖼️ Serverless Image Resizer | S3, Lambda, IAM, Pillow |
 
 ---
 
 # 📂 Repository Structure
 
-```
+```text
 aws-python-projects-symbiosis/
 
 │
@@ -34,6 +36,10 @@ aws-python-projects-symbiosis/
 │
 ├── 05-serverless-file-vault/
 │
+├── 06-automated-cost-optimizer/
+│
+├── 07-serverless-image-resizer/
+│
 └── README.md
 ```
 
@@ -45,10 +51,13 @@ aws-python-projects-symbiosis/
 - Amazon S3
 - AWS Lambda
 - Amazon API Gateway
+- Amazon EventBridge
 - Amazon Polly
 - Amazon DynamoDB
 - Amazon CloudWatch
 - AWS IAM
+- AWS CloudFormation
+- AWS SAM
 - AWS CodeBuild
 - AWS CodePipeline
 
@@ -62,6 +71,9 @@ aws-python-projects-symbiosis/
 - CSS
 - JavaScript
 - Boto3
+- Pillow
+- AWS SAM
+- CloudFormation
 - Git
 - GitHub
 - Ubuntu Linux
@@ -71,40 +83,67 @@ aws-python-projects-symbiosis/
 
 # 📚 Project Highlights
 
-### ☁️ Cloud Code Runner
+## ☁️ Cloud Code Runner
+
 - Execute Python and Java code online
-- Automatic upload of successful source files to Amazon S3
-- CI/CD using GitHub, CodeBuild and CodePipeline
+- Upload successful source files to Amazon S3
+- CI/CD using GitHub, AWS CodeBuild and AWS CodePipeline
 
 ---
 
-### 📚 Story Reader with Amazon Polly
+## 📚 Story Reader with Amazon Polly
+
 - Convert text stories into speech
 - Automatically generate MP3 audio using Amazon Polly
 - Store story metadata in DynamoDB
+- Serverless event-driven architecture
 
 ---
 
-### 📰 Top 5 News Website
+## 📰 Top 5 News Website
+
 - Fetch latest news using Python
-- Generate a professional news portal
-- Upload HTML, JSON and images to Amazon S3 for static website hosting
+- Automatically generate a professional news portal
+- Upload HTML, JSON and images to Amazon S3
+- Static website hosting on Amazon S3
 
 ---
 
-### 🎬 Bollywood OTT Platform
+## 🎬 Bollywood OTT Platform
+
 - Upload movies and posters to Amazon S3
-- Automatically generate a Netflix-style website
+- Automatically generate a Netflix-style OTT website
 - Deploy website on Amazon EC2
 - Stream videos directly from Amazon S3
 
 ---
 
-### 📁 Serverless File Vault
+## 📁 Serverless File Vault
+
 - Upload and retrieve files securely
 - REST APIs using Amazon API Gateway
-- Serverless backend with AWS Lambda
+- Serverless backend using AWS Lambda
 - Automatic logging through Amazon CloudWatch
+
+---
+
+## 💰 Automated Cost Optimizer
+
+- Automatically scans CloudWatch Log Groups
+- Applies configurable retention policies
+- Daily scheduled execution using Amazon EventBridge
+- Infrastructure as Code with AWS SAM & CloudFormation
+- CloudWatch dashboard and custom metrics for monitoring
+
+---
+
+## 🖼️ Serverless Image Resizer
+
+- Automatically resize uploaded images
+- Amazon S3 event triggers AWS Lambda
+- Process images using Pillow
+- Store resized images in an output S3 bucket
+- Fully serverless image processing pipeline
 
 ---
 
@@ -113,16 +152,19 @@ aws-python-projects-symbiosis/
 Throughout these projects, I gained practical experience with:
 
 - Cloud Computing using AWS
+- Python Automation with Boto3
 - Event-Driven Architecture
 - Serverless Application Development
 - REST API Development
-- Cloud Storage Solutions
-- Infrastructure Automation
-- CI/CD Pipelines
-- Secure IAM Configuration
-- Cloud Monitoring and Logging
 - Static Website Hosting
-- Python Automation with Boto3
+- Cloud Storage Solutions
+- Infrastructure as Code (AWS SAM & CloudFormation)
+- CI/CD Pipelines
+- Cloud Monitoring & Logging
+- AWS Cost Optimization
+- Secure IAM Configuration
+- Media Processing using AWS Lambda
+- Image Processing with Pillow
 
 ---
 
@@ -134,12 +176,10 @@ Throughout these projects, I gained practical experience with:
 
 R. C. Patel Institute of Technology, Shirpur
 
-AWS with Python Trainee (Symbiosis)
-
-Sponsored by Capgemini
+**AWS with Python Course Trainee (Symbiosis, Sponsored by Capgemini)**
 
 ---
 
 # ⭐ Repository Summary
 
-This repository contains five end-to-end AWS cloud projects developed using Python during the Symbiosis AWS with Python Training Program. The projects demonstrate practical implementation of cloud computing concepts including EC2 deployment, serverless applications, REST APIs, Amazon S3 storage, DynamoDB integration, CI/CD automation, media streaming, and cloud monitoring using real AWS services.
+This repository contains **seven end-to-end AWS cloud projects** developed using Python during the **AWS with Python Training Program** conducted by **Symbiosis** and **sponsored by Capgemini**. These projects demonstrate practical implementation of cloud computing concepts including EC2 deployment, serverless applications, REST APIs, Infrastructure as Code, AWS SAM, CloudFormation, Amazon S3 storage, DynamoDB integration, Amazon Polly, CI/CD automation, media streaming, image processing, cloud monitoring, and AWS cost optimization using real AWS services.
